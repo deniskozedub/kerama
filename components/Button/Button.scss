@@ -1,0 +1,48 @@
+@import "scss/core/mixins";
+@import "scss/core/vars";
+
+.button {
+  @include styleForText($fontSizeSmall, $fontAdditional, white);
+
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.buttonOrange {
+  background-color: $colorOrange;
+  border-radius: 7px;
+  padding: 17px 0 15px;
+
+  &:active,
+  &:hover {
+    background-color: $colorDarkGrey;
+    color: $colorOrange;
+  }
+}
+
+.buttonTelegram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $colorBlue;
+  border-radius: 7px;
+  padding: 11px 0;
+
+  &:hover,
+  &:active {
+    background-color: $colorBlueDark;
+  }
+}
+
+.buttonSimple {
+  @include styleForText($fontSizeSmall, $fontMain, white);
+
+  text-transform: lowercase;
+  text-decoration: underline;
+  width: auto;
+
+  &:hover {
+    color: $colorOrange;
+  }
+}

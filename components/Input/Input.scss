@@ -1,0 +1,28 @@
+@import "scss/core/mixins";
+@import "scss/core/vars";
+
+.input {
+  width: 100%;
+  padding-bottom: 2.5px;
+  border: none;
+  border-bottom: 0.5px solid $colorGreyLight;
+
+  @include styleForText($fontSizeContent, $fontMain);
+
+  &::placeholder {
+    color: $colorGrey;
+    font-size: $fontSizeSmall;
+  }
+}
+
+.inputError {
+  border-bottom: 1px solid $colorError;
+
+  &::placeholder {
+    color: $colorError;
+  }
+}
+
+.inputCorrect {
+  border-bottom: 1px solid $colorBlack;
+}

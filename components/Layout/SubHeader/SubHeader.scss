@@ -1,0 +1,54 @@
+@import "scss/core/mixins";
+@import "scss/core/vars";
+
+.wrapper {
+  width: 100%;
+  height: 70px;
+  background-color: $colorDarkGrey;
+}
+
+.container {
+  @include customContainer(1170px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.text {
+  color: white;
+}
+
+.buttonWrapper {
+  width: 220px;
+}
+
+.image {
+  margin-left: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    height: auto;
+    background: white;
+    padding-bottom: 23px;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .text {
+    color: $colorBlack;
+    padding-top: 10px;
+    padding-bottom: 9px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .buttonWrapper {
+    width: 100%;
+  }
+}

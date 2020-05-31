@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @include styleWithPrefix(box-sizing, border-box);
+  box-sizing: border-box;
+  font-size: $fontSizeContent;
+  font-family: $fontMain, sans-serif;
+  color: $colorBlack;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+button:hover {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+h1 {
+  @include styleForText(77px, $fontForTitle);
+}
+
+h2 {
+  @include styleForText(46px, $fontForTitle);
+}
+
+h3 {
+  @include styleForText(40px, $fontForTitle);
+}
+
+h4 {
+  @include styleForText(24px, $fontForTitle);
+}
+
+h5 {
+  @include styleForText(20px, $fontForTitle);
+}
+
+h6 {
+  @include styleForText(18, $fontForTitle);
+}
+
+textarea {
+  resize: none;
+}

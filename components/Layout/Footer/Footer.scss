@@ -1,0 +1,132 @@
+@import "scss/core/mixins";
+@import "scss/core/vars";
+
+.wrapper {
+  width: 100%;
+  height: 88px;
+  background-color: $colorBlack;
+}
+
+.container {
+  @include customContainer(1170px);
+
+  height: 100%;
+  display: flex;
+}
+
+.infoWrapper {
+  margin-top: 6px;
+}
+
+.phone,
+.address {
+  margin-bottom: 8px;
+}
+
+.phone,
+.address,
+.email {
+  @include styleForText($fontSizeSmall, $fontMain, white);
+
+  position: relative;
+  padding-left: 28px;
+
+  &:before {
+    position: absolute;
+    left: 0;
+  }
+}
+
+.phone {
+  &::before {
+    content: url("/svg/el_phone.svg");
+  }
+}
+
+.address {
+  &::before {
+    content: url("/svg/bi_geo-alt.svg");
+  }
+}
+
+.email {
+  &::before {
+    content: url("/svg/ion_mail.svg");
+  }
+}
+
+.linksWrapper {
+  margin-top: 22px;
+  margin-left: 255px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.links {
+  display: flex;
+}
+
+.link {
+  margin-right: 25px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.icon {
+  fill: white;
+
+  &:hover {
+    fill: $colorOrange;
+  }
+}
+
+.copyright {
+  margin-top: 13px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.copyIcon {
+  margin-right: 4px;
+}
+
+.buttonLink {
+  margin-left: 4px;
+  text-transform: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    justify-content: center;
+  }
+
+  .infoWrapper {
+    display: none;
+  }
+
+  .linksWrapper {
+    margin-top: 7px;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    height: 114px;
+  }
+
+  .copyright {
+    flex-direction: column-reverse;
+
+    & span:first-child {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import "scss/core/mixins";
+@import "scss/core/vars";
+
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: $colorBlack;
+}
+
+.wrapper {
+  @include customContainer(1170px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.infoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.phone {
+  color: white;
+  padding-right: 11px;
+
+  &:hover {
+    color: $colorOrange
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    height: 50px;
+  }
+
+  .wrapper {
+    justify-content: flex-end;
+
+    & img {
+      display: none;
+    }
+  }
+
+  .infoWrapper {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .phone {
+    padding-right: 0;
+    padding-bottom: 3px;
+  }
+
+  .phone {
+    font-size: $fontSizeSmall;
+  }
+}
