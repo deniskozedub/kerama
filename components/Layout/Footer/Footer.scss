@@ -12,6 +12,7 @@
 
   height: 100%;
   display: flex;
+  justify-content: space-between;
   position: relative;
 }
 
@@ -57,10 +58,7 @@
 }
 
 .linksWrapper {
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  margin-left: -12px;
+  margin-top: 22px;
 }
 
 .icon {
@@ -71,8 +69,15 @@
   }
 }
 
+.logo {
+  width: 235px;
+  margin-top: -11px;
+}
+
 @media screen and (max-width: 1200px) {
   .container {
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
 
@@ -81,12 +86,18 @@
   }
 
   .linksWrapper {
-    top: 7px;
+    margin-top: 7px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    height: 41px;
+    height: 67px;
+  }
+
+  .logo {
+    width: 153.66px;
+    height: 35px;
+    margin-top: -6px;
   }
 }

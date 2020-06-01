@@ -1,7 +1,7 @@
 import React from 'react';
 import Instagram from '../../../public/svg/typcn_social-instagram.svg';
-import Button from '../../Button/Button';
 import styles from './Footer.scss';
+import IconLogo from '../../../public/svg/Kjuj.svg';
 
 const Footer = () => (
   <footer className={styles.wrapper}>
@@ -16,6 +16,7 @@ const Footer = () => (
           <Instagram className={styles.icon} />
         </a>
       </div>
+      <IconLogo className={styles.logo} />
     </div>
   </footer>
 );
