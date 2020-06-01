@@ -16,6 +16,11 @@
   height: 100%;
 }
 
+.logo {
+  width: 235px;
+  margin-top: -11px;
+}
+
 .infoWrapper {
   display: flex;
   align-items: center;
@@ -37,10 +42,10 @@
 
   .wrapper {
     justify-content: flex-end;
+  }
 
-    & img {
-      display: none;
-    }
+  .logo {
+    display: none;
   }
 
   .infoWrapper {
