@@ -6,7 +6,7 @@ const SubHeader = () => (
   <div className={styles.wrapper}>
     <div className={styles.container}>
       <p className={styles.text}>
-        присоединяйтесь к нам в телеграм и
+        Присоединяйтесь к нам в телеграм и
         получайте все самые актуальные акции и
         предложения!
       </p>

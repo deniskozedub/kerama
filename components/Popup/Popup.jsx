@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -9,7 +9,11 @@ import styles from './Popup.scss';
 
 const Popup = ({ setIsPopupOpen }) => (
   <>
-    <div className={styles.popupWrapper} />
+    <div
+      className={styles.popupWrapper}
+      role="button"
+      onClick={() => setIsPopupOpen(false)}
+    />
     <div className={styles.popupContent}>
       <button
         className={styles.buttonClose}

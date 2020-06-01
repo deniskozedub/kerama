@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import cx from 'classnames';
+import IMask from 'imask';
 import PropTypes from 'prop-types';
 import styles from './Input.scss';
 
@@ -17,6 +18,14 @@ const Input = ({
     errors,
   },
 }) => {
+  useEffect(() => {
+    if (name === 'phone') {
+      const numberMask = new IMask(document.querySelector(`.${styles.input}[name=phone]`), {
+        mask: '+{38} (000) 000 00 00',
+      })
+    }
+  }, []);
+
   const classNameForInput = cx(cx(styles.input, classNameWrapper), {
     [styles.inputError]: touched[name] && errors[name],
     [styles.inputCorrect]: !(touched[name] && errors[name]),
