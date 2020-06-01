@@ -1,0 +1,124 @@
+@import "scss/core/vars";
+@import "scss/core/mixins";
+
+.sliderWrapper {
+  position: relative;
+}
+
+.sliderButton {
+  position: absolute;
+  width: 300px;
+  bottom: 121px;
+  left: 50%;
+  margin-left: -150px;
+}
+
+.buttonSlider {
+  position: absolute;
+  top: 50%;
+  margin-top: -23.5px;
+}
+
+.buttonRight {
+  right: 0;
+}
+
+.buttonLeft {
+  left: 0;
+  z-index: 1;
+  transform: rotate(-180deg);
+}
+
+.sliderIcon {
+  stroke: white;
+  stroke-width: 4px;
+
+  &:hover {
+    stroke: $colorDarkGrey;
+  }
+}
+
+.dots {
+  position: absolute;
+  bottom: 22px;
+  display: flex !important;
+  justify-content: center;
+  width: 100%;
+
+  & li {
+    margin-right: 8px;
+  }
+
+  & li:last-child {
+    margin-right: 0;
+  }
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: white;
+}
+
+.dotActive {
+  background: #091a44;
+}
+
+.sliderSecond,
+.sliderFirst,
+.sliderThird {
+  height: 462px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.sliderFirst {
+  background-image: url("/images/baner.png");
+}
+
+.sliderSecond {
+  background-image: url("/images/baner1.png");
+}
+
+.sliderThird {
+  background-image: url("/images/baner2.png");
+}
+
+@media screen and (max-width: 768px) {
+  .sliderWrapper {
+    width: 103.6%;
+    margin-left: -2%;
+  }
+
+  .buttonSlider {
+    display: none;
+  }
+
+  .sliderSecond,
+  .sliderFirst,
+  .sliderThird {
+    height: 477px;
+  }
+
+  .sliderButton {
+    width: 304px;
+    bottom: 63px;
+  }
+
+  .sliderFirst {
+    background-image: url("/images/baner3.png");
+  }
+
+  .sliderSecond {
+    background-image: url("/images/baner4.png");
+  }
+
+  .sliderThird {
+    background-image: url("/images/baner5.png");
+  }
+
+  .dots {
+    bottom: 25px;
+  }
+}

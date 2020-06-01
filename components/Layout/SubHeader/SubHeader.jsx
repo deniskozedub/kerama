@@ -13,6 +13,7 @@ const SubHeader = () => (
       <Button
         viewType="telegram"
         classNameWrapper={styles.buttonWrapper}
+        href="https://telegram.me/discont_kerama_bot"
       >
         телеграм бот
         <img
