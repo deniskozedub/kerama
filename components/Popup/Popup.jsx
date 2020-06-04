@@ -8,6 +8,16 @@ import Button from '../Button/Button';
 import { sendUserData } from '../../services/main';
 import styles from './Popup.scss';
 
+const ButtonExit = ({ setIsPopupOpen }) => (
+  <button
+    type="button"
+    className={styles.buttonClose}
+    onClick={() => setIsPopupOpen(false)}
+  >
+    <IconExit />
+  </button>
+);
+
 const Popup = ({ setIsPopupOpen }) => {
   const [status, setStatus] = useState('normal');
 
@@ -18,96 +28,83 @@ const Popup = ({ setIsPopupOpen }) => {
         role="button"
         onClick={() => setIsPopupOpen(false)}
       />
-      <div className={styles.popupContent}>
-        <button
-          type="button"
-          className={styles.buttonClose}
-          onClick={() => setIsPopupOpen(false)}
-        >
-          <IconExit />
-        </button>
-        <Formik
-          initialValues={{
-            name: '', email: '', phone: '', comment: '',
-          }}
-          validationSchema={Yup.object({
-            name: Yup.string()
-              .required('Введите имя'),
-            email: Yup.string()
-              .email('email не корректный')
-              .required('Введите email'),
-            phone: Yup.string()
-              .matches(/^(\+38\ )\((0)\d{2}\)(\ )\d{3}(\ )\d{2}(\ )\d{2}$/, 'номер не валиден')
-              .required('Введите номер'),
-          })}
-          onSubmit={(values) => {
-            setStatus('working');
-            sendUserData(values)
-              .then((response) => {
-                if (response.status) {
-                  setTimeout(() => setStatus('ready'), 1500);
-                } else {
-                  setTimeout(() => setStatus('error'), 1500);
-                }
-              }).catch(() => setStatus('error'));
-          }}
-        >
-          {(formik) => (
-            <form className={styles.form} onSubmit={formik.handleSubmit}>
-              {status !== 'ready' && (
-                <>
-                  <h5 className={styles.formTitle}>заполните форму</h5>
-                  <p className={styles.text}>и мы свяжемся с вами</p>
-                  <Input formikProps={{
-                    ...formik,
-                    placeholder: formik.touched.name && formik.errors.name || 'Имя',
-                    type: 'text',
-                    name: 'name',
-                    classNameWrapper: styles.inputWrapper,
-                  }}
-                  />
-                  <Input formikProps={{
-                    ...formik,
-                    placeholder: formik.touched.email && formik.errors.email || 'E-mail',
-                    type: 'email',
-                    name: 'email',
-                    classNameWrapper: styles.inputWrapper,
-                  }}
-                  />
-                  <Input formikProps={{
-                    ...formik,
-                    placeholder: formik.touched.phone && formik.errors.phone || 'Номер телефона',
-                    type: 'text',
-                    name: 'phone',
-                    classNameWrapper: styles.inputWrapper,
-                  }}
-                  />
-                  <Input formikProps={{
-                    ...formik,
-                    placeholder: 'Комментарий',
-                    type: 'text',
-                    name: 'comment',
-                  }}
-                  />
-                  <Button
-                    viewType="orange"
-                    type="submit"
-                    disabled={!formik.dirty || !formik.isValid}
-                    classNameWrapper={styles.buttonWrapper}
-                  >
-                    получить консультацию
-                  </Button>
-                </>
-              ) || status === 'ready' && (
-                <p className={styles.formText}>Ваш запрос успешно отправлен, мы перезвоним вам в ближайшеее время</p>
-              ) || status === 'error' && (
-                <p className={styles.formText}>Возникли проблемы с запросом, попробуйте позже</p>
-              )}
-            </form>
-          )}
-        </Formik>
-      </div>
-      {status === 'working' && (
+      {status === 'normal' && (
+        <div className={styles.popupContent}>
+          <ButtonExit setIsPopupOpen={setIsPopupOpen} />
+          <Formik
+            initialValues={{
+              name: '', email: '', phone: '', comment: '',
+            }}
+            validationSchema={Yup.object({
+              name: Yup.string()
+                .required('Введите имя'),
+              email: Yup.string()
+                .email('email не корректный')
+                .required('Введите email'),
+              phone: Yup.string()
+                .matches(/^(\+38\ )\((0)\d{2}\)(\ )\d{3}(\ )\d{2}(\ )\d{2}$/, 'номер не валиден')
+                .required('Введите номер'),
+            })}
+            onSubmit={(values) => {
+              setStatus('working');
+              sendUserData(values)
+                .then((response) => {
+                  if (response.status) {
+                    setTimeout(() => setStatus('ready'), 1500);
+                  } else {
+                    setTimeout(() => setStatus('error'), 1500);
+                  }
+                }).catch(() => setStatus('error'));
+            }}
+          >
+            {(formik) => (
+              <form className={styles.form} onSubmit={formik.handleSubmit}>
+                <h5 className={styles.formTitle}>заполните форму</h5>
+                <p className={styles.text}>и мы свяжемся с вами</p>
+                <Input formikProps={{
+                  ...formik,
+                  placeholder: formik.touched.name && formik.errors.name || 'Имя',
+                  type: 'text',
+                  name: 'name',
+                  classNameWrapper: styles.inputWrapper,
+                }}
+                />
+                <Input formikProps={{
+                  ...formik,
+                  placeholder: formik.touched.email && formik.errors.email || 'E-mail',
+                  type: 'email',
+                  name: 'email',
+                  classNameWrapper: styles.inputWrapper,
+                }}
+                />
+                <Input formikProps={{
+                  ...formik,
+                  placeholder: formik.touched.phone && formik.errors.phone || 'Номер телефона',
+                  type: 'text',
+                  name: 'phone',
+                  classNameWrapper: styles.inputWrapper,
+                }}
+                />
+                <Input formikProps={{
+                  ...formik,
+                  placeholder: 'Комментарий',
+                  type: 'text',
+                  name: 'comment',
+                }}
+                />
+                <Button
+                  viewType="orange"
+                  type="submit"
+                  disabled={!formik.dirty || !formik.isValid}
+                  classNameWrapper={styles.buttonWrapper}
+                >
+                  получить консультацию
+                </Button>
+              </form>
+            )}
+          </Formik>
+        </div>
+      ) || status === 'working' && (
         <>
           <div className={styles.waitBlock} />
           <img
@@ -115,6 +112,22 @@ const Popup = ({ setIsPopupOpen }) => {
             alt="sniper"
             className={styles.previewImage}
           />
+        </>
+      ) || status === 'ready' && (
+        <>
+        <div className={styles.messageWrapper} />
+        <div className={styles.textWrapper}>
+          <ButtonExit setIsPopupOpen={setIsPopupOpen} />
+          <p className={styles.message}>ваша заявка успешно обработана, мы свяжемся с вами в ближайшее время</p>
+        </div>
+        </>
+      ) || status === 'error' && (
+        <>
+          <div className={styles.messageWrapper} />
+          <div className={styles.textWrapper}>
+            <ButtonExit setIsPopupOpen={setIsPopupOpen} />
+            <p className={styles.message}>что то пошло не так, попробуйте еще</p>
+          </div>
         </>
       )}
     </>
