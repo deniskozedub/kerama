@@ -21,8 +21,8 @@ const Input = ({
   useEffect(() => {
     if (name === 'phone') {
       const numberMask = new IMask(document.querySelector(`.${styles.input}[name=phone]`), {
-        mask: '+{38} (000) 000 00 00',
-      })
+        mask: '+{38} (\\000) 000 00 00',
+      });
     }
   }, []);
 

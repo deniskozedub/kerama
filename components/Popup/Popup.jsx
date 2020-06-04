@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import cx from 'classnames';
 import * as Yup from 'yup';
 import IconExit from '../../public/svg/ant-design_close-outline.svg';
 import Input from '../Input/Input';
@@ -42,9 +41,9 @@ const Popup = ({ setIsPopupOpen }) => {
               .required('Введите номер'),
           })}
           onSubmit={(values) => {
+            setStatus('working');
             sendUserData(values)
               .then((response) => {
-                setStatus('working');
                 if (response.status) {
                   setTimeout(() => setStatus('ready'), 1500);
                 } else {
