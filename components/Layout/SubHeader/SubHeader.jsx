@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../Button/Button';
 import styles from './SubHeader.scss';
 
-const SubHeader = () => (
+const SubHeader = ({ link }) => (
   <div className={styles.wrapper}>
     <div className={styles.container}>
       <p className={styles.text}>
@@ -13,7 +14,7 @@ const SubHeader = () => (
       <Button
         viewType="telegram"
         classNameWrapper={styles.buttonWrapper}
-        href="https://telegram.me/discont_kerama_bot"
+        href={link}
       >
         телеграм бот
         <img
@@ -25,5 +26,9 @@ const SubHeader = () => (
     </div>
   </div>
 );
+
+SubHeader.propTypes = {
+  link: PropTypes.string,
+};
 
 export default SubHeader;

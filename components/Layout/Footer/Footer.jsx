@@ -1,18 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Instagram from '../../../public/svg/typcn_social-instagram.svg';
 import styles from './Footer.scss';
 import IconLogo from '../../../public/svg/Kjuj.svg';
 
-const Footer = () => (
+const Footer = ({ info }) => (
   <footer className={styles.wrapper}>
     <div className={styles.container}>
       <div className={styles.infoWrapper}>
-        <p className={styles.phone}>+375(29) 675-78-56</p>
-        <p className={styles.address}>г. Днепр, ул. Центральная</p>
-        <p className={styles.email}>discont-kerama@gmail.com</p>
+        <a
+          href={`tel:${info.phone}`}
+          className={styles.phone}
+        >
+          {info.phone}
+        </a>
+        <p className={styles.address}>{info.address}</p>
+        <a
+          href={`mailto:${info.email}`}
+          className={styles.email}
+        >
+          {info.email}
+        </a>
       </div>
       <div className={styles.linksWrapper}>
-        <a href="/">
+        <a href={info.instagram}>
           <Instagram className={styles.icon} />
         </a>
       </div>
@@ -20,5 +31,14 @@ const Footer = () => (
     </div>
   </footer>
 );
+
+Footer.propTypes = {
+  info: PropTypes.shape({
+    phone: PropTypes.string,
+    address: PropTypes.string,
+    email: PropTypes.string,
+    instagram: PropTypes.string,
+  }),
+};
 
 export default Footer;

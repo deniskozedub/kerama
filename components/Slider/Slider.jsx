@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import IconArrow from '../../public/svg/Polygon.svg';
 import Button from '../Button/Button';
+import { withResponse } from '../hoc/withResponsive';
 import styles from './Slider.scss';
 
 const ArrowSlider = ({ className, onClick, direction }) => {
@@ -23,8 +24,16 @@ const ArrowSlider = ({ className, onClick, direction }) => {
   );
 };
 
-const SliderCustom = ({ setIsPopupOpen }) => {
+const SliderCustom = ({
+  setIsPopupOpen, bannerDesktop, bannerMobile, isDesktopScreen,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [appropriateArray, setAppropriateArray] = useState(null);
+
+  useEffect(() => {
+    const array = window.innerWidth > 768 && bannerDesktop[0] || bannerMobile[0];
+    setAppropriateArray(array);
+  }, []);
 
   const settings = {
     dots: true,
@@ -51,9 +60,15 @@ const SliderCustom = ({ setIsPopupOpen }) => {
   return (
     <div className={styles.sliderWrapper}>
       <Slider {...settings}>
-        <div className={styles.sliderFirst} />
-        <div className={styles.sliderSecond} />
-        <div className={styles.sliderThird} />
+        {appropriateArray && appropriateArray.map((item, index) => (
+          <div key={index + 1} className={styles.slideWrapper}>
+            <img
+              className={styles.slide}
+              src={item}
+              alt="slide"
+            />
+          </div>
+        ))}
       </Slider>
       <Button
         viewType="orange"
@@ -68,7 +83,9 @@ const SliderCustom = ({ setIsPopupOpen }) => {
 
 SliderCustom.propTypes = {
   setIsPopupOpen: PropTypes.func,
+  bannerDesktop: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  bannerMobile: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  isDesktopScreen: PropTypes.bool,
 };
 
-export default SliderCustom;
-
+export default withResponse(SliderCustom);
