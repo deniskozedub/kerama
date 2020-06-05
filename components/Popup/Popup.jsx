@@ -118,7 +118,11 @@ const Popup = ({ setIsPopupOpen }) => {
         <div className={styles.messageWrapper} />
         <div className={styles.textWrapper}>
           <ButtonExit setIsPopupOpen={setIsPopupOpen} />
-          <p className={styles.message}>ваша заявка успешно обработана, мы свяжемся с вами в ближайшее время</p>
+          <p className={styles.message}>
+            Вау 🤩 Твой запрос был нам отправлен 😜
+            Если мы  не перезвоним в течении получаса 📞 ⏰
+            Вы получите скидку на заказ 🔥 👊
+          </p>
         </div>
         </>
       ) || status === 'error' && (
@@ -126,7 +130,10 @@ const Popup = ({ setIsPopupOpen }) => {
           <div className={styles.messageWrapper} />
           <div className={styles.textWrapper}>
             <ButtonExit setIsPopupOpen={setIsPopupOpen} />
-            <p className={styles.message}>что то пошло не так, попробуйте еще</p>
+            <p className={styles.message}>
+              Упс 😢 По ходу что-то ни так 😩
+              Повторите ваш запрос позже 🏄
+            </p>
           </div>
         </>
       )}

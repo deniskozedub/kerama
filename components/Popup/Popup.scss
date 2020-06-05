@@ -23,27 +23,37 @@
 
 .popupContent,
 .textWrapper {
-  padding: 40px 42px 65px;
   background: white;
   z-index: 100;
   transform: translate(-50%, -50%);
+  animation-duration: 1s;
 }
 
 .textWrapper {
   width: 255px;
   height: 165px;
-  padding: 0 20px;
-  overflow: hidden;
+  padding: 0 42px;
   display: flex;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
-  animation-name: openPopup;
-  animation-duration: 1s;
+  animation-name: openPopupText;
 }
 
-@keyframes openPopup {
+@keyframes openPopupText {
   0% { height: 0; width: 0; }
   100% {   height: 165px; width: 255px; }
+}
+
+.popupContent {
+  animation-name: openPopupForm;
+  padding: 40px 42px;
+  height: 409px;
+}
+
+@keyframes openPopupForm {
+  0% { height: 0; width: 0; }
+  100% { height: 409px; width: 255px; }
 }
 
 .message {
@@ -51,12 +61,6 @@
   opacity: 1;
   animation-name: changeOpacity;
   animation-duration: 1s;
-}
-
-@keyframes changeOpacity {
-  0% {opacity: 0 }
-  90% { opacity: 0 }
-  100% {   opacity: 1 }
 }
 
 
@@ -83,6 +87,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.previewImage {
   overflow: auto;
 }
 
@@ -97,6 +104,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation-duration: 1s;
+  animation-name: changeOpacity;
+}
+
+@keyframes changeOpacity {
+  0% {opacity: 0 }
+  90% { opacity: 0 }
+  100% {   opacity: 1 }
 }
 
 .formTitle {
@@ -132,7 +147,7 @@
 
   .previewImage,
   .popupContent,
-  .messageWrapper {
+  .textWrapper {
     position: fixed;
   }
 
