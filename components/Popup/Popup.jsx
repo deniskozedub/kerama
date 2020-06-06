@@ -80,7 +80,7 @@ const Popup = ({ setIsPopupOpen }) => {
                 <Input formikProps={{
                   ...formik,
                   placeholder: formik.touched.phone && formik.errors.phone || 'Номер телефона',
-                  type: 'text',
+                  type: 'tel',
                   name: 'phone',
                   classNameWrapper: styles.inputWrapper,
                 }}
